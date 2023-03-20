@@ -2,7 +2,7 @@ import { useGlobalContext } from '../context'
 import { BsHandThumbsUp } from 'react-icons/bs'
 
 const Meals = () => {
-  const { loading, meals, selectMeal } = useGlobalContext()
+  const { loading, meals, selectMeal, addToFavorites } = useGlobalContext()
 
   if (loading) {
     return <section className="section">
@@ -23,7 +23,7 @@ const Meals = () => {
           <img src={singleMeal.strMealThumb} className="img" onClick={ () => selectMeal(singleMeal.idMeal) } />
           <footer>
             <h5>{singleMeal.strMeal}</h5>
-            <button className="like-btn"> <BsHandThumbsUp /> </button>
+            <button className="like-btn" onClick={() => addToFavorites(singleMeal.idMeal)}> <BsHandThumbsUp /> </button>
           </footer>
         </article>
       })}
